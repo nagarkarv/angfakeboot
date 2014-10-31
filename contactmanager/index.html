@@ -60,12 +60,13 @@
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-default" value="Save" data-ng-click="saveContact()" data-ng-disabled="contactForm.$invalid">Save</button>
+                <button type="submit" class="btn btn-default" value="Cancel" data-ng-click="cancel()" data-ng-disabled="!contactForm.$invalid">Cancel</button>
             </div>
         </form>
         </div>
     </div>
     <div class="row">
-    <div class="col-sm-12" style="background-color:lavenderblush;" data-ng-show="viewContactsVisible">
+    <div class="col-sm-12" style="background-color:Aqua;" data-ng-show="viewContactsVisible">
         <div class="table-responsive table-bordered">
         <table class="table table-striped table-bordered">
             <tr>

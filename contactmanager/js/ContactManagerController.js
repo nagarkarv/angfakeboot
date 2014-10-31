@@ -70,6 +70,13 @@ function ContactManagerController($scope) {
         }
     };
 
+    $scope.cancel = function(){
+        $scope.newContact = {}
+        $scope.addFormVisible = false;
+        $scope.viewContactsVisible = false;
+
+    }
+
     $scope.showAddForm = function () {
         $scope.addFormVisible = true;
         $scope.viewContactsVisible = false;
@@ -79,6 +86,7 @@ function ContactManagerController($scope) {
         $scope.addFormVisible = false;
         $scope.viewContactsVisible = true;
     }
+
 }
 
 var app = angular.module("ContactManagerApp", []);
