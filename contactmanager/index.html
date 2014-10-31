@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Contact Management</title>
+    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script> -->
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/faker.min.js"></script>
+    <script type="text/javascript" src="js/ContactManagerController.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <!--<link rel="Stylesheet" href="css/main.css" /> -->
+</head>
+<body>
+<div class="container" data-ng-app="ContactManagerApp" data-ng-controller="ContactManagerController">
+<!--{{testValue}}-->
+    </br>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron">
+                <p>
+                Single page Personal Contact Manager App using bootstrap, faker, angularjs!!
+                <p><a href="#" class="btn btn-default btn-lg" data-ng-click="showAddForm()">
+                <span class="glyphicon glyphicon-briefcase glyphicon-align-left"></span> Add New Contact </a>
+                <a href="#" class="btn btn-default btn-lg" data-ng-click="showViewContacts()">
+                <span class="glyphicon glyphicon-list glyphicon-align-left"></span> View All Contacts </a>
+                </p>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4" style="background-color:lavender;" data-ng-show="addFormVisible">
+        <form role="form" name="contactForm">
+                <input type="hidden" name="id" data-ng-model="newContact.id"/>
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input id="firstName" class="form-control" type="text" name="firstName" data-ng-model="newContact.firstName" required/>
+                <span style="color:Red" data-ng-show="contactForm.firstName.$dirty && contactForm.firstName.$invalid">
+                <span style="color:Red" data-ng-show="contactForm.firstName.$error.required">First Name is required!</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input id="lastName" class="form-control" type="text" name="lastName" data-ng-model="newContact.lastName" required/>
+                <span style="color:Red" data-ng-show="contactForm.lastName.$dirty && contactForm.lastName.$invalid">
+                <span style="color:Red" data-ng-show="contactForm.lastName.$error.required">Last Name is required!</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="emailAddress">Email Address:</label>
+                <input id="emailAddress" class="form-control" type="email" name="emailAddress" data-ng-model="newContact.emailAddress" required/>
+                <span style="color:Red" data-ng-show="contactForm.emailAddress.$dirty && contactForm.emailAddress.$invalid">
+                <span style="color:Red" data-ng-show="contactForm.emailAddress.$error.required">Email address is required!</span>
+                <span style="color:Red" data-ng-show="contactForm.emailAddress.$error.email">Invalid Email Address!</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="telephoneNo">Telephone:</label>
+                <input id="telephoneNo" class="form-control" type="text" name="telephoneNo" data-ng-model="newContact.telephoneNo"/>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default" value="Save" data-ng-click="saveContact()" data-ng-disabled="contactForm.$invalid">Save</button>
+            </div>
+        </form>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-12" style="background-color:lavenderblush;" data-ng-show="viewContactsVisible">
+        <div class="table-responsive table-bordered">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Address</th>
+                <th>Telephone No</th>
+                <th>Action</th>
+            </tr>
+            <tr data-ng-repeat="contact in contacts">
+                <td>{{contact.firstName}}</td>
+                <td>{{contact.lastName}}</td>
+                <td>{{contact.emailAddress}}</td>
+                <td>{{contact.telephoneNo}}</td>
+                <td>
+                    <a href="#" data-ng-click="editContact(contact.id)">edit</a> | 
+                    <a href="#" data-ng-click="deleteContact(contact.id)">delete</a> 
+                </td>
+            </tr>
+        </table>
+     </div>
+     </div>
+    </div>
+</div>
+</body>
+</html>
