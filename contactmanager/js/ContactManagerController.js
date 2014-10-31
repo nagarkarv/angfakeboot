@@ -14,7 +14,7 @@ function ContactManagerController($scope) {
     // Self Invoking function
     (function () {
         // user faker.js to generate a few fake names
-        for (i = 0; i < 15; i++) {
+        for (i = 0; i < 5; i++) {
             $scope.newContact.id = $scope.uid;
             $scope.newContact.firstName = faker.name.firstName();
             $scope.newContact.lastName = faker.name.lastName();
